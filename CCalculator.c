@@ -9,9 +9,13 @@ int main(){
     
     printf("Type your username: ");
     fgets(user, sizeof(user), stdin);
-
-    printf("Hello, %s \n", user);
-
+    user[strlen(user) - 1] = '\0';
+    
+    printf("\n\nHello, %s \n", user);
+    printf("I will give you a brief description of this code, you can only add you can't subtract, divide, and multiply\n");
+    printf("\nPress enter to continue \n");
+    
+    getchar();
     printf("Addition Calculator\n");
     printf("--------------------------\n");
     printf("Type your first number: ");
