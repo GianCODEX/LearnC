@@ -17,7 +17,7 @@ int main(){
     printf("\n\nSa tingin mo ba may pagaasa ka kay %s? \n", &crushname);
     
     printf("Please enter Y if Yes, N if No: ");
-    scanf(" %c", option);
+    scanf("%c", &option);
     switch(option)
     {
         case 'y': case 'Y':
