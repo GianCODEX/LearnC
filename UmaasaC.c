@@ -6,13 +6,31 @@ int main(){
     char crushname[50] = "";
     char me[50] = "";
     
-    printf("Type your name: ");
+    printf("Type your full name: ");
     fgets(me, sizeof(me), stdin);
     me[strlen(me) - 1] = '\0';
+
+    while(strlen(me) < 5){
+        printf("\nPlease enter your full name. \n");
+        printf("Type your full name: ");
+        fgets(me, sizeof(me), stdin);
+        me[strlen(me) - 1] = '\0';
+        break;
+    } 
+    
+    if(strlen(me) < 5){
+        printf("Please enter your full name. \n");
+    }
     
     printf("Type your crush name: ");
     fgets(crushname, sizeof(crushname), stdin);
     crushname[strlen(crushname) - 1] = '\0';
+    
+    while(strlen(crushname) < 1){
+        printf("Type your crush name: ");
+        fgets(crushname, sizeof(crushname), stdin);
+        crushname[strlen(crushname) - 1] = '\0';
+    }
     
     printf("\n\nSa tingin mo ba may pagaasa ka kay %s? \n", &crushname);
     
@@ -21,13 +39,13 @@ int main(){
     switch(option)
     {
         case 'y': case 'Y':
-            printf("Ulol di ka nya mahal.\n");
+            printf("Kawawa, wala syang pantingin sa'yo. \n");
             break;
         case 'n': case 'N':
             printf("Baket umaasa kapa hanggang ngayon. \n");
             break;
         default:
-            printf("Tanga mo naman boss naasa sa wala. \n");
+            printf("Naku di masagot ni %s kase alam nya wala syang pagasa. \n", me);
             break;
     }
     return 0;
