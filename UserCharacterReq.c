@@ -11,6 +11,13 @@ int main() {
     fgets(name, sizeof(name), stdin);
     name[strlen(name) - 1] = '\0';
     
+    while(strlen(name) == 0){
+        printf("Must have 10+ more characters\n");
+        printf("Enter your username: ");
+        fgets(name, sizeof(name), stdin);
+        name[strlen(name) - 1] = '\0';
+    }
+    
     if(strlen(name) >= 11){
         printf("Hello %s", name);
     }
