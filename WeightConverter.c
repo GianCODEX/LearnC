@@ -18,7 +18,7 @@ int main(){
         break;
         case 2:
             printf("Enter the weight in pounds: ");
-            scanf("%lf", pounds);
+            scanf("%lf", &pounds);
             printf("%.2f pounds is equal to %.2f kilograms\n", pounds, pounds / 2.204620);
         break;
         default:
