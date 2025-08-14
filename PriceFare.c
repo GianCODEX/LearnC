@@ -46,14 +46,14 @@ int main() {
     // Check senior status
     printf("Are you a senior citizen? (yes/no): ");
     fgets(isStatus, sizeof(isStatus), stdin);
-    isStatus[strcspn(isStatus, "\n")] = '\0';
+    isStatus[strcspn(isStatus, "\n")] = '\0'; // remove newline
     if (strcasecmp(isStatus, "yes") == 0) {
-        is_Senior = true;
+        is_Senior = true; 
     }
 
     // Apply discounts
-    if (is_MataasNaKahoy) {
-        if (is_Student && is_Senior) {
+    if (is_MataasNaKahoy) { // Applies when destination is Mataas na Kahoy
+        if (is_Student && is_Senior) {  
             printf("You have a discount of 40%%\n");
             jeepPriceToKahoy *= 0.6;
         } else if (is_Student) {
@@ -64,13 +64,13 @@ int main() {
             jeepPriceToKahoy *= 0.8;
         } else {
             printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, jeepPriceToKahoy);
-            return 0;
+            return 0; // Ends the code with Discount
         }
-        printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, jeepPriceToKahoy);
+        printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, jeepPriceToKahoy); // Ends the code without Discount
     }
 
-    if (is_MataasNaLupa) {
-        if (is_Student && is_Senior) {
+    if (is_MataasNaLupa) { // Applies when destination is Mataas na Lupa
+        if (is_Student && is_Senior) { 
             printf("You have a discount of 40%%\n");
             jeepPrice *= 0.6;
         } else if (is_Student) {
@@ -80,8 +80,9 @@ int main() {
             printf("You have a senior discount of 20%%\n");
             jeepPrice *= 0.8;
         }
-        printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, jeepPrice);
+        printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, jeepPrice); // Ends the code with Discount
     }
-
+    
     return 0;
 }
+
