@@ -20,15 +20,12 @@ int main(){
     switch(operator){
         case '+':
         result = num1 + num2;
-            printf("The total add is... %.2lf", result);
             break;
         case '-':
         result = num1 - num2;
-            printf("The total sub is... %.2lf", result);
             break;
         case '*':
         result = num1 * num2;        
-            printf("The total multiply is... %.2lf", result);
             break;
         case '/':
         if(num2 == 0){
@@ -36,11 +33,14 @@ int main(){
         }
         else{
             result = num1 / num2;      
-            printf("The total divide is... %.2lf", result);
         }
             break;
             default:
                 printf("Invalid operator...\n");
     }
+
+    printf("-----------------------------\n");
+    printf("Results: %.2lf", result);
+
     return 0;
 }
