@@ -3,10 +3,10 @@
 #include <string.h>
 
 int main() {
-    char name[50] = "";
-    char location[50] = "\0";
+    const char name[50] = "";
+    const char location[50] = "\0";
     int age = 0;
-    char student_input[10];
+    const char student_input[10];
     bool isStudent = true;
 
     printf("Enter your username: (must have 10+ characters) ");
@@ -60,4 +60,5 @@ int main() {
     printf("USERNAME                AGE        LOCATION           STUDENT\n");
     printf("%-22s %-10d %-15s %-40s\n", name, age, location,isStudent ? "Yes" : "No");
     return 0;
+
 }
