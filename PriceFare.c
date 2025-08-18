@@ -2,6 +2,9 @@
 #include <stdbool.h>
 #include <string.h>
 
+#define JEEPPRICETO_KAHOY 25 //Defines the value of JeepPrice to Kahoy
+#define JEEP_PRICE 15 //Defines the value of JeepPrice
+
 float jeepPrice = 15.00;
 float jeepPriceToKahoy = 25.00;
 bool is_Student = false;
@@ -15,6 +18,7 @@ char destination[50];
 char isStatus[10];
 
 int main() {
+    float finalfare; // acts as function for #define {5,6}
     // Get name
     printf("Enter your name: ");
     fgets(name, sizeof(name), stdin);
@@ -28,8 +32,10 @@ int main() {
     // Identify location
     if (strcasecmp(destination, "Mataas na Kahoy") == 0) {
         is_MataasNaKahoy = true;
+        finalfare = JEEPPRICETO_KAHOY; 
     } else if (strcasecmp(destination, "Mataas na Lupa") == 0) {
         is_MataasNaLupa = true;
+        finalfare = JEEP_PRICE;
     } else {
         printf("Invalid destination. Exiting.\n");
         return 1;
@@ -55,34 +61,33 @@ int main() {
     if (is_MataasNaKahoy) { // Applies when destination is Mataas na Kahoy
         if (is_Student && is_Senior) {  
             printf("You have a discount of 40%%\n");
-            jeepPriceToKahoy *= 0.6;
+            finalfare *= 0.6;
         } else if (is_Student) {
             printf("You have a student discount of 20%%\n");
-            jeepPriceToKahoy *= 0.8;
+            finalfare *= 0.8;
         } else if (is_Senior) {
             printf("You have a senior discount of 20%%\n");
-            jeepPriceToKahoy *= 0.8;
+            finalfare *= 0.8;
         } else {
-            printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, jeepPriceToKahoy);
+            printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, finalfare);
             return 0; // Ends the code with Discount
         }
-        printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, jeepPriceToKahoy); // Ends the code without Discount
+        printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, finalfare); // Ends the code without Discount
     }
 
     if (is_MataasNaLupa) { // Applies when destination is Mataas na Lupa
         if (is_Student && is_Senior) { 
             printf("You have a discount of 40%%\n");
-            jeepPrice *= 0.6;
+            finalfare *= 0.6;
         } else if (is_Student) {
             printf("You have a student discount of 20%%\n");
-            jeepPrice *= 0.8;
+            finalfare *= 0.8;
         } else if (is_Senior) {
             printf("You have a senior discount of 20%%\n");
-            jeepPrice *= 0.8;
+            finalfare *= 0.8;
         }
-        printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, jeepPrice); // Ends the code with Discount
+        printf("\nHello %s, the fare price to %s is: %.2f\n", name, destination, finalfare); // Ends the code with Discount
     }
     
     return 0;
 }
-
