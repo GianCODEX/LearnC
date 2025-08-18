@@ -1,22 +1,30 @@
 #include <stdio.h>
 
-#define PASS_MARK 75
+#define AGE_CHILD 11
+#define AGE_TEENAGER 19
+#define AGE_ADULT 59
 
-int main() {
-    const int MAX_Score = 100;
+int main (){
+    int ageuser;
     
-    int StudentScore;
-    
-    printf("Passing Mark (using #define): %d\n", PASS_MARK);
-    printf("Maximum Score (using const): %d\n", MAX_Score);
-    
-    printf("Enter student score ( 0 - %d ): ", MAX_Score);
-    scanf(" %d", &StudentScore);
-    
-    if(StudentScore >= PASS_MARK){
-        printf("You have passed, results: %d\n", StudentScore);
-    }else{
-        printf("You have failed, results: %d\n", StudentScore);
+    printf("Enter your age: ");
+    scanf("%d", &ageuser);
+ 
+    if (ageuser<=AGE_CHILD){
+    printf("Child.\n");
     }
+ 
+    else if (ageuser<=AGE_TEENAGER){
+    printf("Teenager.\n");
+    }
+ 
+    else if (ageuser<AGE_ADULT){
+    printf("Adult.\n");
+    }
+ 
+    else {
+    printf("Senior\n");
+    }
+    
     return 0;
 }
