@@ -1,52 +1,82 @@
 #include <stdio.h>
-#include <string.h>
+
+float deposit();
+float withdraw(float balance);
+void checkBalance(float balance);
 
 int main(){
-    char option = 0;
-    char crushname[50] = "";
-    char me[50] = "";
     
-    printf("Type your full name: ");
-    fgets(me, sizeof(me), stdin);
-    me[strlen(me) - 1] = '\0';
+    int choice = 0;
+    float balance = 0.0f;
+    
+    printf("WELCOME TO THE UNION BANK\n");
+    
+    do{
+        printf("Pick an option:");
+        printf("\n1. Balance");
+        printf("\n2. Deposit");
+        printf("\n3. Withdraw");
+        printf("\n4. Exit");
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+        
+       switch(choice){
+           case 1:
+                checkBalance(balance);
+                break;
+           case 2:
+                balance += deposit();
+                break;
+           case 3:
+                balance -= withdraw(balance);
+                break;
+           case 4:
+                printf("You have exited the program...\n");
+                break;
+            default:
+                printf("Invalid Choice! Pick between 1 - 4\n");
+       } 
+    }while(choice != 4);
+}
 
-    while(strlen(me) < 5){
-        printf("\nPlease enter your full name. \n");
-        printf("Type your full name: ");
-        fgets(me, sizeof(me), stdin);
-        me[strlen(me) - 1] = '\0';
-        break;
-    } 
+float deposit(){
     
-    if(strlen(me) < 5){
-        printf("Please enter your full name. \n");
+    float amount = 0.0f;
+    
+    printf("\nEnter amount: ");
+    scanf("%f", &amount);
+    
+    if(amount < 0){
+        printf("Invalid amount\n");
+        return 0.0f;
     }
-    
-    printf("Type your crush name: ");
-    fgets(crushname, sizeof(crushname), stdin);
-    crushname[strlen(crushname) - 1] = '\0';
-    
-    while(strlen(crushname) < 1){
-        printf("Type your crush name: ");
-        fgets(crushname, sizeof(crushname), stdin);
-        crushname[strlen(crushname) - 1] = '\0';
+    else{
+        printf("You have successfully deposited %.2f\n", amount);
+        return amount;
     }
+}
+float withdraw(float balance){
     
-    printf("\n\nSa tingin mo ba may pagaasa ka kay %s? \n", &crushname);
+    float amount = 0;
     
-    printf("Please enter Y if Yes, N if No: ");
-    scanf("%c", &option);
-    switch(option)
-    {
-        case 'y': case 'Y':
-            printf("Kawawa, wala syang pantingin sa'yo. \n");
-            break;
-        case 'n': case 'N':
-            printf("Baket umaasa kapa hanggang ngayon. \n");
-            break;
-        default:
-            printf("Naku di masagot ni %s kase alam nya wala syang pagasa. \n", me);
-            break;
+    printf("Enter amount to withdraw: ");
+    scanf("%f", &amount);
+    
+    if(amount < 0){
+        printf("Invalid amount\n");
+        return 0.0f;
     }
-    return 0;
+    else if(amount > balance){
+        printf("Insufficient Funds! Your balance is %.2f", balance);
+        return 0.0f;
+    }
+    else{
+        printf("You have successfully withdrew %.2f", amount);
+        return amount;
+    }
+}
+void checkBalance(float balance){
+    printf("\nYour current balance is: $%.2f\n", balance);
+}
+
 }    
